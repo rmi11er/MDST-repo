@@ -92,7 +92,15 @@ def part4b(filename, password=None):
     Print out the decrypted username and password.
     If a password is specified, update the file with the new password.
     """
+    with open(filename, "r") as f:
+        print str(f)
+        f.close()
 
+    if password:
+        with open(filename, "a") as f2:
+            encodedNewPass = base64.b64encode(password.encode("utf-8"))
+            encodedStrPass = str(encodedNewPass)
+            f2.write(encodedStrPass)
 
 if __name__ == "__main__":
     part1(3)  # odd!
